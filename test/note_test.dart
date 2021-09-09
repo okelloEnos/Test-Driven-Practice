@@ -1,3 +1,5 @@
+import 'package:note_taking_tdd/cubit/notes_cubit.dart';
+import 'package:note_taking_tdd/model/note.dart';
 import 'package:test/test.dart';
 void main(){
  group('Notes Cubit', (){
@@ -21,7 +23,7 @@ void main(){
   var cubit = NotesCubit();
   cubit.createNote('title', 'body');
   cubit.createNote('anotherTitle', 'anotherBody');
-  cubit.delete(1);
+  cubit.deleteNote(1);
   expect(cubit.state.notes.length, 1);
   expect(cubit.state.notes.first.id, 2);
 
@@ -36,7 +38,7 @@ void main(){
   var newTitle = 'Cool title';
   var newBody = 'Cool Note Body';
 
-  cubit.update(2);
+  cubit.updateNote(2, newTitle, newBody);
   expect(cubit.state.notes.length, 3);
   expect(cubit.state.notes[1], Note(2, newTitle, newBody));
 
